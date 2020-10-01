@@ -162,6 +162,7 @@ func main() {
 				continue
 			}
 			animals[request[1]] = getAnimalType(request[2])
+			fmt.Println("Created it!")
 
 		default:
 			fmt.Println("Not supported request: ", request)
