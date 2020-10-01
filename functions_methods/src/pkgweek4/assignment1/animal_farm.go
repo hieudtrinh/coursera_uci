@@ -135,24 +135,28 @@ func main() {
 	// 1) newanimal sammy cow
 	// 2) newanimal miso bird
 	// 3) newanimal kenny snake
-	// 4) sammy eat | sammy move | sammy speak
-	// 4) miso eat | miso move | miso speak
-	// 4) kenny eat | kenny move | kenny speak
+	// 4) query sammy eat | query sammy move | query sammy speak
+	// 4) query miso eat | query miso move | query miso speak
+	// 4) query kenny eat | query kenny move | query kenny speak
 	fmt.Println("Welcome to my virtual animal farm!")
 	fmt.Println("You can create animals or query information about the animals you have created before")
 	fmt.Println("Example: <newanimal> <animal_name> [cow|bird|snake]")
-	fmt.Println("         <animal_name> [eat|move|speak]")
+	fmt.Println("         <quey> <animal_name> [eat|move|speak]")
 	for {
 		request := getUserInput()
-		switch {
-		case len(request) == 2:
+		if len(request) != 3 {
+			fmt.Println("Unknown request")
+			continue
+		}
+		switch request[0] {
+		case "query":
 			// <name_of_animal> <request_information>
-			animal := animals[request[0]]
+			animal := animals[request[1]]
 			if animal == nil {
-				fmt.Println("Animal not exist: ", animals[request[0]])
+				fmt.Println("Animal not exist: ", animals[request[1]])
 				continue
 			}
-			switch request[1] {
+			switch request[2] {
 			case "eat":
 				animal.Eat()
 			case "move":
@@ -161,16 +165,12 @@ func main() {
 				animal.Speak()
 			default:
 				{
-					fmt.Println("Requested information is not supported: ", request[1])
+					fmt.Println("Requested information is not supported: ", request[2])
 					continue
 				}
 			}
-		case len(request) == 3:
+		case "newanimal":
 			// <newanimal> <name_of_animal> <animal_type>
-			if request[0] != "newanimal" {
-				fmt.Println("Error - unkonw request ", request[0])
-				continue
-			}
 			animal := animals[request[1]]
 			if animal != nil {
 				fmt.Println("Requested animal name exist: ", request[1])
