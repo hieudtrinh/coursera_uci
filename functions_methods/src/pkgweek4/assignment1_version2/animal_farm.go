@@ -120,9 +120,9 @@ func main() {
 	// 1) newanimal sammy cow
 	// 2) newanimal miso bird
 	// 3) newanimal kenny snake
-	// 4) sammy eat | sammy move | sammy speak
-	// 4) miso eat | miso move | miso speak
-	// 4) kenny eat | kenny move | kenny speak
+	// 4) query sammy eat | query sammy move | query sammy speak
+	// 4) query miso eat | query miso move | query miso speak
+	// 4) query kenny eat | query kenny move | query kenny speak
 	fmt.Println("Welcome to my virtual animal farm!")
 	fmt.Println("You can create animals or query information about the animals you have created before")
 	fmt.Println("Example: <newanimal> <animal_name> [cow|bird|snake]")
